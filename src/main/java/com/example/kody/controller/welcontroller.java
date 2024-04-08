@@ -6,6 +6,9 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -36,5 +39,19 @@ public class welcontroller {
     @PostMapping("/check")
     public boolean check(@RequestBody Map<String, String> q){
         return service.getPW().equals(q.get("PW"));
+    }
+
+    @GetMapping("/question")
+    public List<Map<Double,String>> Max(){
+        double selecter = service.getMax();
+        System.out.println(selecter);
+        Map<Double, String> data = new HashMap<>();
+
+        List<Map<Double,String>> datas = new ArrayList<>();
+        for(double i = 5;i<selecter;i++){
+            data.put(i,service.getQ(i));
+            datas.add(data);
+        }
+        return datas;
     }
 }
