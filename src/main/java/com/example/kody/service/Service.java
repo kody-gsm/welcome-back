@@ -22,15 +22,16 @@ public class Service {
         mappers.setA(answer,ID);
     }
 
-    public double getMax(){
-        return mappers.getMAX();
-    }
+//    안쓰여서 주석처리함
+//    public double getMax(){
+//        return mappers.getMAX();
+//    }
 
     public String getPW(){
         return mappers.getPW();
     }
 
-    public double getCounter(){
+    public double getNum(){
         return mappers.getNum();
     }
 }

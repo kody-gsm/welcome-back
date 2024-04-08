@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Datas {
+public class Datas {//나중에 사용 예정
     private double ID;
     private String Q;
     private String A;
