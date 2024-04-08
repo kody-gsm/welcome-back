@@ -18,11 +18,19 @@ public class Service {
         return mappers.getQ(ID);
     }
 
+    public void setA(String answer, double ID){
+        mappers.setA(answer,ID);
+    }
+
     public double getMax(){
         return mappers.getMAX();
     }
 
     public String getPW(){
         return mappers.getPW();
+    }
+
+    public double getCounter(){
+        return mappers.getNum();
     }
 }

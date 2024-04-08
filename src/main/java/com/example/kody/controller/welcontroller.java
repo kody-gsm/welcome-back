@@ -5,23 +5,33 @@ import com.example.kody.service.Service;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/kody")
 @Transactional
-@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 public class welcontroller {
     private final Service service;
+
     @PostMapping("/create")
     public String create(@RequestBody Map<String, String> q){
         service.setQ(q.get("question"));
-        return "Create";
+        return "Create-question";
+    }
+
+    @PostMapping("/createA")
+    public String createA(@RequestBody Map<String, String> a){
+        service.setA(a.get("adminquestion"), service.getCounter());
+        return "Create-answer";
+    }
+
+    @GetMapping("/question")
+    public String question(){
+        return service.getQ(service.getCounter());
     }
 
     @GetMapping("/getQ")
@@ -31,27 +41,10 @@ public class welcontroller {
         return datas;
     }
 
-    @GetMapping("/getA")
-    public String geta(){
-        return service.getQ(5);
-    }
-
     @PostMapping("/check")
     public boolean check(@RequestBody Map<String, String> q){
-        return service.getPW().equals(q.get("PW"));
-    }
-
-    @GetMapping("/question")
-    public List<Map<Double,String>> Max(){
-        double selecter = service.getMax();
-        System.out.println(selecter);
-        Map<Double, String> data = new HashMap<>();
-
-        List<Map<Double,String>> datas = new ArrayList<>();
-        for(double i = 5;i<selecter;i++){
-            data.put(i,service.getQ(i));
-            datas.add(data);
-        }
-        return datas;
+//        System.out.println(q.get("password"));
+//        System.out.println(service.getPW().equals(q.get("password")));
+        return service.getPW().equals(q.get("password"));
     }
 }
