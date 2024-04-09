@@ -45,16 +45,16 @@ public class welcontroller {
         return data;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000/", allowCredentials = "true", methods = {RequestMethod.GET, RequestMethod.POST})
-    @RequestMapping(value = "/answers", method = {RequestMethod.GET, RequestMethod.POST})
-    public Map<Double,String> answers(){
-        Map<Double, String> map = new HashMap<>();
-        for(double i = 1; i <= service.getMax(); i++){
-            String As = service.getA(i);
-            map.put(i, As);
-        }
-        return map;
-    }
+//    @CrossOrigin(origins = "http://localhost:3000/", allowCredentials = "true", methods = {RequestMethod.GET, RequestMethod.POST})
+//    @RequestMapping(value = "/answers", method = {RequestMethod.GET, RequestMethod.POST})
+//    public Map<Double,String> answers(){
+//        Map<Double, String> map = new HashMap<>();
+//        for(double i = 1; i <= service.getMax(); i++){
+//            String As = service.getA(i);
+//            map.put(i, As);
+//        }
+//        return map;
+//    }
 
     @CrossOrigin(origins = "http://localhost:3000/", allowCredentials = "true", methods = {RequestMethod.GET, RequestMethod.POST})
     @RequestMapping(value = "/question", method = {RequestMethod.GET, RequestMethod.POST})
@@ -76,5 +76,17 @@ public class welcontroller {
     @PostMapping("/check") //어드민이랑 PW랑 같은지 확인하고 맞으면 true를 주는 코드
     public boolean check(@RequestBody Map<String, String> q){
         return service.getPW().equals(q.get("password"));
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true", methods = RequestMethod.POST)
+    @RequestMapping(value = "/datas", method = {RequestMethod.GET, RequestMethod.POST})
+    public List<Map<Integer, String>> datas(){
+        List<Map<Integer, String>> data = new ArrayList<>();
+        for(int i = 1; i <= 4; i++){
+            Map<Integer, String> map = new HashMap<>();
+            map.put(i, service.getQ(i));
+            data.add(map);
+        }
+        return data;
     }
 }
