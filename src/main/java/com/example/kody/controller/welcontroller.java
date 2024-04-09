@@ -40,6 +40,17 @@ public class welcontroller {
         return list;
     }
 
+    @PostMapping("/questions") //Q전체를 가져오는 코드 Post버전
+    public List<String> questionsPost(){
+        List<String> list = new ArrayList<>();
+        for(double i = 1; i <= service.getMax(); i++){
+            String Qs;
+            Qs = service.getQ(i);
+            list.add(Qs);
+        }
+        return list;
+    }
+
     @GetMapping("/answers") //답변들 전체다 가져오는 코드
     public List<String> answers(){
         List<String> list = new ArrayList<>();
@@ -51,8 +62,24 @@ public class welcontroller {
         return list;
     }
 
+    @PostMapping("/answers") //답변들 전체다 가져오는 코드 Post버전
+    public List<String> answersPost(){
+        List<String> list = new ArrayList<>();
+        for(double i = 1; i <= service.getMax(); i++){
+            String As;
+            As = service.getA(i);
+            list.add(As);
+        }
+        return list;
+    }
+
     @GetMapping("/question") //답변하지 않은 질문 중 가자 예전 Q를 가져오는 코드
     public String question(){
+        return service.getQ(service.getNum());
+    }
+
+    @GetMapping("/question") //답변하지 않은 질문 중 가자 예전 Q를 가져오는 코드 post버전
+    public String questionPost(){
         return service.getQ(service.getNum());
     }
 
