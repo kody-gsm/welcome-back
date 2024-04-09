@@ -67,7 +67,7 @@ public class welcontroller {
     public Map<Double,String> questions(){
         Map<Double, String> map = new HashMap<>();
         for(double i = 1; i <= service.getMax(); i++){
-            String Qs = service.getA(i);
+            String Qs = service.getQ(i);
             map.put(i, Qs);
         }
         System.out.println(map);
