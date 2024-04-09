@@ -33,13 +33,16 @@ public class welcontroller {
 
     @CrossOrigin(origins = "http://localhost:3000/", allowCredentials = "true", methods = {RequestMethod.GET, RequestMethod.POST})
     @RequestMapping(value = "/questions", method = {RequestMethod.GET, RequestMethod.POST})
-    public Map<Double,String> questions(){
-        Map<Double, String> map = new HashMap<>();
-        for(double i = 1; i <= service.getMax(); i++){
-            String Qs = service.getQ(i);
-            map.put(i, Qs);
+    public List<Map<String, String>> questions() {
+        List<Map<String, String>> data = new ArrayList<>();
+        for (double i = 1; i <= service.getMax(); i++) {
+            Map<String, String> map = new HashMap<>();
+            map.put("question", service.getQ(i));
+            map.put("answer", service.getA(i));
+            data.add(map);
         }
-        return map;
+        System.out.println(data);
+        return data;
     }
 
     @CrossOrigin(origins = "http://localhost:3000/", allowCredentials = "true", methods = {RequestMethod.GET, RequestMethod.POST})
