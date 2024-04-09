@@ -16,11 +16,11 @@ public interface Mappers {
     @Select("SELECT Q FROM welcome WHERE ID = (#{ID})")
     String getQ(double ID); //Q를 받는 코드
 
-//    @Select("SELECT A FROM welcome WHERE ID = (#{ID})")
-//    String getA(double ID);
+    @Select("SELECT A FROM welcome WHERE ID = (#{ID})")
+    String getA(double ID);
 
     @Select("SELECT MAX(ID) FROM welcome")
-    double getMAX(); //가장 최근에 만들어진 질문을 가져오는 코드
+    double getMAX(); //질문 크기 가져오는
 
     @Select("SELECT MIN(ID) FROM welcome WHERE A is null")
     double getNum(); //답반이 없는 것 중에서 가장 예전에 만들어진 질문의 ID를 가져오는 코드

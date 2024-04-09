@@ -22,10 +22,9 @@ public class Service {
         mappers.setA(answer,ID);
     }
 
-//    안쓰여서 주석처리함
-//    public double getMax(){
-//        return mappers.getMAX();
-//    }
+    public double getMax(){
+        return mappers.getMAX();
+    }
 
     public String getPW(){
         return mappers.getPW();
@@ -33,5 +32,9 @@ public class Service {
 
     public double getNum(){
         return mappers.getNum();
+    }
+
+    public String getA(double ID){
+        return mappers.getA(ID);
     }
 }
