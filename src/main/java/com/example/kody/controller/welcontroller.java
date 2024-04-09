@@ -78,7 +78,7 @@ public class welcontroller {
         return service.getQ(service.getNum());
     }
 
-    @GetMapping("/question") //답변하지 않은 질문 중 가자 예전 Q를 가져오는 코드 post버전
+    @PostMapping("/question") //답변하지 않은 질문 중 가자 예전 Q를 가져오는 코드 post버전
     public String questionPost(){
         return service.getQ(service.getNum());
     }
