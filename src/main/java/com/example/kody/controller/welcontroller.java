@@ -78,7 +78,7 @@ public class welcontroller {
         return service.getPW().equals(q.get("password"));
     }
 
-    @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true", methods = RequestMethod.POST)
+    @CrossOrigin(origins = "http://localhost:3000/", allowCredentials = "true", methods = {RequestMethod.GET, RequestMethod.POST})
     @RequestMapping(value = "/datas", method = {RequestMethod.GET, RequestMethod.POST})
     public List<Map<Integer, String>> datas(){
         List<Map<Integer, String>> data = new ArrayList<>();
