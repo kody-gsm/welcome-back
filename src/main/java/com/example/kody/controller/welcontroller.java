@@ -33,7 +33,7 @@ public class welcontroller {
     public List<String> questions(){
         List<String> list = new ArrayList<>();
         for(double i = 1; i <= service.getMax(); i++){
-            String Qs = "";
+            String Qs;
             Qs = service.getQ(i);
             list.add(Qs);
         }
@@ -44,7 +44,7 @@ public class welcontroller {
     public List<String> answers(){
         List<String> list = new ArrayList<>();
         for(double i = 1; i <= service.getMax(); i++){
-            String As = "";
+            String As;
             As = service.getA(i);
             list.add(As);
         }
